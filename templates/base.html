@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    {% block nav %}
+<div id="nav-bar">
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+         <a class="navbar-brand" href="#">
+            <img src="https://i.ebayimg.com/images/g/O8UAAOSwj4Vcfsfc/s-l300.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Beer Finder
+         </a>
+        <nav class="nav justify-content-end">
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'dashbord' %}">profile</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link " href="{% url 'logout' %}"  >Logout</a>
+              {% else %}
+              <a class="nav-link " href="{% url 'login' %}"  >Log in</a>
+              <a class="nav-link " href="{% url 'signup' %}"  >Sign up</a>
+              {% endif %}
+        </nav>
+    </nav>
+</div>
+    {% endblock %}
+{% block block_1 %}
+{% endblock %}
+<footer class="page-footer fixed-bottom " >
+    <div class="footer text-muted text-center">
+        made by Yonibrese
+    </div>
+</footer>
+
+</body>
+</html>

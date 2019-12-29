@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%  block title %}brewer control view{%endblock%}
+
+{% block nav %}
+<div id="nav_bar" >
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+         <a class="navbar-brand" href="#">
+            <img src="https://i.ebayimg.com/images/g/O8UAAOSwj4Vcfsfc/s-l300.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Beer placer
+         </a>
+        <nav class="nav justify-content-end">
+            <a class="nav-link" href="{% url 'dashbord' %}">profile</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link " href="{% url 'logout' %}"  >Logout</a>
+        </nav>
+    </nav>
+</div>
+{% endblock %}
+
+
+{% block block_1 %}
+    <h1>{{ brewer.brewery.name }}</h1>
+{% endblock %}
