@@ -5,7 +5,7 @@ from . import models
 
 
 # Register your models here.
-
+admin.site.register(models.Brewery)
 admin.site.register(models.Brewer)
 admin.site.register(models.Viewer)
 

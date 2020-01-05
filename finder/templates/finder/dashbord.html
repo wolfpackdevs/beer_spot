@@ -3,5 +3,8 @@
 {% block title %} {{ user.username }}'s dashbord {% endblock %}
 
 {% block block_1 %}
-<h1>Welcome {{user.first_name}}</h1>
+<h1>Welcome {{user.username}}</h1>
+{% if request.user.brewer.exists %}
+<h2>hello brewer</h2>
+{% endif %}
 {% endblock %}

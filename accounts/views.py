@@ -26,16 +26,16 @@ def signup_brewer(request):
     if request.method == 'POST':
         form = forms.SignUpBrewerForm(request.POST)
         if form.is_valid():
+            form.save()
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             raw_psw = form.cleaned_data['password1']
             brewery = models.Brewery(name=form.cleaned_data['brewery_name'])
             brewery.save()
-            user_new = models.User(username=username, email=email, password=raw_psw)
-            user_new.save()
-            brewer = models.Brewer(user=user_new, brewery=brewery)
-            brewer.save()
+            user_new = User(username=username, email=email, password=raw_psw)
             user = authenticate(username=username, password=raw_psw)
+            brewer = models.Brewer(user=user, brewery=brewery)
+            brewer.save()
             login(request, user)
             return redirect('dashbord')
     else:

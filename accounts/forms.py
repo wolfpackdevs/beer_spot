@@ -32,14 +32,4 @@ class SignUpBrewerForm(UserCreationForm):
 
     # class Meta:
     #     model = models.Brewer
-    #     fields = ('brewery_name', 'password1', 'password2')
-
-    # @transaction.atomic
-    # def save(self):
-    #     user = super().save(commit=False)
-    #     user.save()
-    #     brewery = models.Brewery(name=self.cleaned_data['brewery_name'])
-    #     brewery.save()
-    #     brewer = models.Brewer(user=user, brewery=brewery)
-    #     brewer.save()
-    #     return user
+    #     fields = ('username', 'brewery_name', 'email', 'password1', 'password2')
