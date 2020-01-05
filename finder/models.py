@@ -29,3 +29,4 @@ class Beer(models.Model):
     style = models.ForeignKey(Style, on_delete=models.CASCADE)
     flavor = models.ManyToManyField(Flavor)
     abv = models.FloatField()
+    date_added = models.DateField(auto_now=True)

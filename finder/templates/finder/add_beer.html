@@ -1,0 +1,14 @@
+{% extends 'finder/brewer.html' %}
+
+{% block title %}add beer{%endblock%}
+
+{% block block_1 %}
+<div id="add_beer">
+    <form method="post">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" value="add Beer" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}
