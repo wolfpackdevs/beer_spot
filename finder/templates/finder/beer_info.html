@@ -1,0 +1,19 @@
+{% extends 'finder/brewer.html' %}
+
+{% block title %}{{ beer }}{% endblock %}
+
+
+{% block block_1 %}
+<div id="beer_info">
+    <h1>{{ beer }}</h1>
+    <hr>
+    <img src="#" alt="placeholder">
+    <h3>{{ beer.style }}</h3>
+    <h3>flavors</h3>
+    <ul>
+        {% for flavor in beer.flavor.all %}
+        <li>{{ flavor }}</li>
+        {%endfor%}
+    </ul>
+</div>
+{% endblock %}

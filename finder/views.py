@@ -39,6 +39,21 @@ def add_beer(request):
             beer = models.Beer(name=name, brewery=brewery, style=style, abv=abv)
             beer.save()
             beer.flavor.add(*flavors)
+            return redirect('brewer')
     else:
         form = forms.AddBeerForm()
     return render(request, 'finder/add_beer.html', {'form': form})
+
+
+@login_required
+def brewer_beer(request):
+    brewer = Brewer.objects.get(user=request.user)
+    brewery = brewer.brewery
+    beers = models.Beer.objects.filter(brewery=brewery).all()
+    return render(request, 'finder/brewers_beer.html', {'beers': beers, 'brewery': brewery})
+
+
+@login_required
+def beer_info(request,id):
+    beer = models.Beer.objects.get(id=id)
+    return render(request, 'finder/beer_info.html', {'beer': beer})

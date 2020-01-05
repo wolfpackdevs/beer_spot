@@ -1,0 +1,18 @@
+{% extends 'finder/brewer.html' %}
+
+{%block title%}{{ brewery.name }}'s beers{% endblock %}
+
+{% block block_1 %}
+<div id="brewer_beer">
+    {% for beer in beers %}
+    <div class="card text-center" style="width: 18rem;">
+        <img src="#" class="card-img-top" alt="empty-for-now">
+        <div class="card-body">
+            <h5 class="card-title">{{ beer.name }}</h5>
+            <p class="card-text">{{ beer.style }}</p>
+            <a href="{%url 'beer_info_1' id=beer.id %}" class="btn btn-primary">more info</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{%endblock%}
