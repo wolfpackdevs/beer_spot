@@ -1,0 +1,16 @@
+{% extends 'brewer/brewer.html' %}
+
+{% block title %} change {{ beer.name }} {% endblock  %}
+
+
+{%block block_1%}
+<div id="change_beer">
+    <h1>{{ beer.name }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="update">
+    </form>
+</div>
+{% endblock %}

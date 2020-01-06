@@ -7,13 +7,14 @@ from . import forms, models
 # Create your views here.
 def signup(request):
     if request.method == 'POST':
-        form = forms.SignUpForm(request.POST)
+        form = forms.SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']
             raw_psw = form.cleaned_data['password1']
+            picture = form.cleaned_data['picture']
             user = authenticate(username=username, password=raw_psw)
-            viewer = models.Viewer(user=user)
+            viewer = models.Viewer(user=user, picture=picture)
             viewer.save()
             login(request, user)
             return redirect('dashbord')
@@ -24,7 +25,7 @@ def signup(request):
 
 def signup_brewer(request):
     if request.method == 'POST':
-        form = forms.SignUpBrewerForm(request.POST)
+        form = forms.SignUpBrewerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             username = form.cleaned_data['username']

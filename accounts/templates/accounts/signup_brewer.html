@@ -3,9 +3,9 @@
 {% block title %}brewer sign up{% endblock %}
 
 {% block block_1 %}
-<div id="sign_up">
+<div id="sign_up" >
     <h2>Sign up your Brewery </h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form.as_p }}

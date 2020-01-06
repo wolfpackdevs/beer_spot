@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import password_validation
-from django.db import transaction
 from django.contrib.auth.models import User
 from . import models
 
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    picture = forms.ImageField(required=False,
+                               widget=(forms.FileInput(attrs={'class': 'form-control'})))
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional',
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional',
@@ -22,14 +23,16 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        fields = ('username', 'picture', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
 
 class SignUpBrewerForm(UserCreationForm):
     brewery_name = forms.CharField(max_length=100)
     email = forms.EmailField(max_length=256, help_text='required',
                              widget=forms.EmailInput())
+    logo = forms.ImageField(required=False,
+                            widget=(forms.FileInput(attrs={'class': 'form-control'})))
 
-    # class Meta:
-    #     model = models.Brewer
-    #     fields = ('username', 'brewery_name', 'email', 'password1', 'password2')
+    class Meta:
+        model = User
+        fields = ('username', 'brewery_name', 'logo', 'email', 'password1', 'password2')

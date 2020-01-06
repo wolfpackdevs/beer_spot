@@ -1,4 +1,4 @@
-{% extends 'finder/brewer.html' %}
+{% extends 'brewer/brewer.html' %}
 
 {%block title%}{{ brewery.name }}'s beers{% endblock %}
 
@@ -10,7 +10,8 @@
         <div class="card-body">
             <h5 class="card-title">{{ beer.name }}</h5>
             <p class="card-text">{{ beer.style }}</p>
-            <a href="{%url 'beer_info_1' id=beer.id %}" class="btn btn-primary">more info</a>
+            <a href="{% url 'beer_info_1' id=beer.id %}" class="btn btn-primary">more info</a>
+            <a href="{% url 'change_beer' id=beer.id %}" class="btn btn-danger">change info</a>
         </div>
     </div>
     {% endfor %}
