@@ -7,7 +7,7 @@
 <div id="beer_info">
     <h1>{{ beer }}</h1>
     <hr>
-    <img src="#" alt="placeholder">
+    <img src="{{ beer.image.url }}" alt="{{beer.name}}">
     <h3>{{ beer.style }}</h3>
     <h3>flavors</h3>
     <ul>
@@ -15,5 +15,6 @@
         <li>{{ flavor }}</li>
         {%endfor%}
     </ul>
+    <h3>abv: {{beer.abv}}%</h3>
 </div>
 {% endblock %}

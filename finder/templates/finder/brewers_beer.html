@@ -6,7 +6,7 @@
 <div id="brewer_beer">
     {% for beer in beers %}
     <div class="card text-center" style="width: 18rem;">
-        <img src="#" class="card-img-top" alt="empty-for-now">
+        <img src="{{ beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
         <div class="card-body">
             <h5 class="card-title">{{ beer.name }}</h5>
             <p class="card-text">{{ beer.style }}</p>

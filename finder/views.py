@@ -23,7 +23,7 @@ def brewer_dashbord(request):
 @login_required
 def add_beer(request):
     if request.method == 'POST':
-        form = forms.AddBeerForm(request.POST)
+        form = forms.AddBeerForm(request.POST, request.FILES)
         if form.is_valid():
             name = form.cleaned_data['name']
             style_new = form.cleaned_data['style']
@@ -32,11 +32,12 @@ def add_beer(request):
             abv = form.cleaned_data['abv']
             brewer = Brewer.objects.get(user=request.user)
             brewery = brewer.brewery
+            image = form.cleaned_data['image']
             style, created = models.Style.objects.get_or_create(style=style_new)
             for flavor in flavors_new:
                 f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor)
                 flavors.append(f_new)
-            beer = models.Beer(name=name, brewery=brewery, style=style, abv=abv)
+            beer = models.Beer(name=name, image=image, brewery=brewery, style=style, abv=abv)
             beer.save()
             beer.flavor.add(*flavors)
             return redirect('brewer')

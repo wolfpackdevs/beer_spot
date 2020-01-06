@@ -28,11 +28,13 @@ class GenericBeer(models.Model):
 
 class Beer(models.Model):
     name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='beer/images/%Y/%m/%d', null=True, blank=True)
     brewery = models.ForeignKey(Brewery, on_delete=models.CASCADE, related_name='brewery')
     style = models.ForeignKey(Style, on_delete=models.CASCADE, related_name='style_type')
     flavor = models.ManyToManyField(Flavor)
-    abv = models.FloatField()
+    abv = models.FloatField(blank=True)
     date_added = models.DateField(auto_now=True)
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.name} by {self.brewery}'
