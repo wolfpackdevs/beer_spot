@@ -1,0 +1,14 @@
+{% extends 'brewer/brewer.html' %}
+
+{% block title %}edit brewer{% endblock %}
+
+{% block block_1 %}
+<div id="edit_brewer">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="edit">
+    </form>
+    <a href="{% url 'change_password' %}">change password</a>
+</div>
+{% endblock %}

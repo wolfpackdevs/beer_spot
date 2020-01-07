@@ -36,3 +36,17 @@ class SignUpBrewerForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'brewery_name', 'logo', 'email', 'password1', 'password2')
+
+
+class EditBrewery(forms.ModelForm):
+    class Meta:
+        model = models.Brewery
+        fields = ('name', 'logo')
+
+
+class EditBrewer(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+

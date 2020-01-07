@@ -39,7 +39,8 @@ class Beer(models.Model):
     style = models.ForeignKey(Style, on_delete=models.CASCADE, related_name='style_type')
     flavor = models.ManyToManyField(Flavor)
     abv = models.FloatField(blank=True)
-    date_added = models.DateField(auto_now_add=True)
+    date_added = models.DateField(auto_now=True)
+    message = models.TextField(null=True)
     is_available = models.BooleanField(default=True)
 
     def __str__(self):

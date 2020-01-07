@@ -13,8 +13,7 @@
             <a class="nav-link" href="{% url 'dashbord' %}">profile</a>
             <a class="nav-link" href="{%url 'add_beer'%}">add beer</a>
             <a class="nav-link" href="{% url 'brewers_beer' %}">your beers</a>
-            <a class="nav-link" href="#">Link</a>
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">contact admin</a>
             <a class="nav-link " href="{% url 'logout' %}"  >Logout</a>
         </nav>
     </nav>
@@ -23,5 +22,8 @@
 
 
 {% block block_1 %}
+    <img src="{{ brewer.brewery.logo.url }}" class="rounded" height="75" width="75">
     <h1>{{ brewer.brewery.name }}</h1>
+        <a href="{% url 'edit_brewer' %}" class="btn btn-primary">edit information</a>
+        <a href="{% url 'edit_brewery' %}" class="btn btn-danger">edit brewery info</a>
 {% endblock %}

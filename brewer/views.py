@@ -55,13 +55,21 @@ def beer_info(request, id):
 
 @login_required
 def change_beer(request, id):
-    beer = models.Beer.objects.get(pk=id)
+    beer = models.Beer.objects.get(id=id)
     if request.method == 'POST':
         form = forms.ChangeBeerForm(request.POST, request.FILES, instance=beer)
         if form.is_valid():
-            beer = form.save(commit=False)
+            beer.style = form.cleaned_data['style']
+            flavors = []
+            flavors_new = (form.cleaned_data['flavor']).split(',')
+            for flavor in flavors_new:
+                f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor)
+                flavors.append(f_new)
+            beer.image = form.cleaned_data['image']
+            beer.flavor.clear()
+            beer.flavor.add(*flavors)
             beer.save()
-            return redirect('home')
+            return redirect('brewers_beer')
     else:
         form = forms.ChangeBeerForm(instance=beer)
     return render(request, 'brewer/change_beer.html', {'beer': beer,
