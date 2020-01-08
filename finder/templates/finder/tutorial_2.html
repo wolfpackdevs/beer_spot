@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Tutorial{% endblock %}
+
+{% block block_1 %}
+<div id="tutorial_2">
+    <a href="{% url 'tutorial_1' %}" ><button>go back</button></a>
+    <h2> micro brews you might like </h2>
+    <h4>By style</h4>
+    <ul>
+        {% for beer in beers_s %}
+        <li>{{beer}}</li>
+        {% endfor %}
+    </ul>
+    <h4>by flavor</h4>
+    <ul>
+        {% for beer in beers_f %}
+        <li>{{beer}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
