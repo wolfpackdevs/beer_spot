@@ -42,6 +42,8 @@ class Beer(models.Model):
     date_added = models.DateField(auto_now=True)
     message = models.TextField(null=True)
     is_available = models.BooleanField(default=True)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.name} by {self.brewery}'

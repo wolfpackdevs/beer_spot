@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from . import forms, models
+from finder.models import Viewer
 
 
 # Create your views here.
@@ -19,7 +20,7 @@ def signup(request):
             raw_psw = form.cleaned_data['password1']
             picture = form.cleaned_data['picture']
             user = authenticate(username=username, password=raw_psw)
-            viewer = models.Viewer(user=user, picture=picture)
+            viewer = Viewer(user=user, picture=picture)
             viewer.save()
             login(request, user)
             return redirect('dashbord')
