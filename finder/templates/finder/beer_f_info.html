@@ -1,10 +1,10 @@
-{% extends 'brewer/brewer.html' %}
+{% extends 'base.html' %}
 
 {% block title %}{{ beer }}{% endblock %}
 
 
 {% block block_1 %}
-<div id="beer_info">
+<div id="beer_f_info">
     <h1>{{ beer }}</h1>
     <hr>
     <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
@@ -16,6 +16,14 @@
         {%endfor%}
     </ul>
     <h3>abv: {{beer.abv}}%</h3>
-    <a href="{% url 'brewers_beer' %}">go back</a>
+    <h3>is the beer available?</h3>
+    {% if beer.is_available %}
+        <p>yes</p>
+    {% else %}
+        <P>no</P>
+    {% endif %}
+    <h3>message from the brewer:</h3>
+    <p>{{beer.message}}</p>
 </div>
+
 {% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from accounts.models import Brewer, Viewer
-from brewer.models import GenericBeer, Beer
+from brewer.models import GenericBeer, Beer, Brewery
 
 
 # Create your views here.
@@ -31,3 +31,19 @@ def tutorial_2(request, id):
     beers_f = Beer.objects.filter(flavor__in=g_beer.flavor.all())
     return render(request, 'finder/tutorial_2.html', {'beers_s': beers_s,
                                                       'beers_f': beers_f})
+
+
+@login_required
+def beer_f_info(request,id):
+    if Brewer.objects.filter(user=request.user).exists():
+        return redirect('brewer')
+    beer = Beer.objects.get(id=id)
+    return render(request, 'finder/beer_f_info.html', {'beer': beer})
+
+
+@login_required
+def all_beers(request):
+    if Brewer.objects.filter(user=request.user).exists():
+        return redirect('brewer')
+    brewerys = Brewery.objects.all().order_by('name')
+    return render(request, 'finder/all_beers.html', {'brewerys': brewerys})

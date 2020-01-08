@@ -35,7 +35,7 @@ class Beer(models.Model):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='beer/images/%Y/%m/%d', default='default/images/default.png',
                               null=True, blank=True)
-    brewery = models.ForeignKey(Brewery, on_delete=models.CASCADE, related_name='brewery')
+    brewery = models.ForeignKey(Brewery, on_delete=models.CASCADE, related_name='beer')
     style = models.ForeignKey(Style, on_delete=models.CASCADE, related_name='style_type')
     flavor = models.ManyToManyField(Flavor)
     abv = models.FloatField(blank=True)
