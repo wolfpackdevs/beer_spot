@@ -21,12 +21,12 @@ class Viewer(models.Model):
 class Preference(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     beer = models.ForeignKey(Beer, on_delete=models.CASCADE)
-    value = models.IntegerField()
+    like = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.user}:{self.beer}:{self.value}'
+        return f'{self.user}:{self.beer}:{self.like}'
 
     class Meta:
-        unique_together = ('user','beer', 'value')
+        unique_together = ('user', 'beer', 'like')
 

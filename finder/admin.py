@@ -5,3 +5,6 @@ from . import models
 
 
 admin.site.register(models.Viewer)
+
+
+admin.site.register(models.Preference)

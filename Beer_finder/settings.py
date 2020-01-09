@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'brewer',
     'accounts',
-    'finder'
+    'finder',
 ]
 
 MIDDLEWARE = [

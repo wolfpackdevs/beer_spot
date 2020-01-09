@@ -4,10 +4,18 @@
 
 
 {% block block_1 %}
+    {% if messages %}
+        {% for message in messages %}
+            <h4{% if message.tags %} class="alert alert-danger" {% endif %}>{{ message }}</h4>
+        {% endfor %}
+    {% endif %}
 <div id="beer_f_info">
     <h1>{{ beer }}</h1>
     <hr>
     <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
+    <hr>
+    <a href="{% url 'like' id=beer.id %}" class="btn btn-primary">like</a>
+    <a href="{% url 'dislike' id=beer.id %}" class="btn btn-danger">dislike</a>
     <h3>{{ beer.style }}</h3>
     <h3>flavors</h3>
     <ul>

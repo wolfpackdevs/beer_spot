@@ -93,3 +93,17 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'accounts/change_password.html', {'form': form})
+
+
+@login_required
+def edit_viewer(request):
+    if models.Brewer.objects.filter(user=request.user).exists():
+        return redirect('brewer')
+    if request.method == 'POST':
+        form = forms.EditViewerInfo(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+    else:
+        form = forms.EditViewerInfo(instance=request.user)
+    return render(request, 'accounts/edit_viewer.html', {'form': form})
+
