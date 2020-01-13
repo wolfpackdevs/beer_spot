@@ -27,15 +27,3 @@ class Brewer(models.Model):
         return f'{self.brewery},{self.user}'
 
 
-# class Viewer(models.Model):
-#     is_brewer = models.BooleanField(default=False)
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     picture = models.ImageField(upload_to='profiles/images/%Y/%m/%d', default='default/images/default.png',
-#                                 null=True, blank=True)
-#     liked_beers = models.ManyToManyField(Beer, null=True, related_name='liked')
-#
-#     def __repr__(self):
-#         return f"{self.user}"
-#
-#     def __str__(self):
-#         return f"{self.user}"

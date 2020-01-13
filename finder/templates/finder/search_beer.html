@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}search beer{% endblock %}
+
+{% block block_1 %}
+<div id="search">
+    <h2>search by style and flavor</h2>
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" class="btn btn-success" >
+    </form>
+
+
+    <ul>
+        {% for beer in filter.qs %}
+        <li><a href="{% url 'beer_f_info' id=beer.id %}" >{{ beer }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

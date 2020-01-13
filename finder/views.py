@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from . import filters
 from accounts.models import Brewer
 from brewer.models import GenericBeer, Beer, Brewery
 
@@ -49,7 +50,15 @@ def all_beers(request):
     if Brewer.objects.filter(user=request.user).exists():
         return redirect('brewer')
     brewerys = Brewery.objects.all().order_by('name')
-    return render(request, 'finder/all_beers.html', {'brewerys': brewerys})
+    brewery_filter = filters.BreweryFilter(request.GET, queryset=brewerys)
+    return render(request, 'finder/all_beers.html', {'filter': brewery_filter})
+
+
+@login_required
+def search_beers(request):
+    beer_list = Beer.objects.all()
+    beer_filter = filters.BeerFilter(request.GET, queryset=beer_list)
+    return render(request, 'finder/search_beer.html', {'filter':beer_filter})
 
 
 @login_required

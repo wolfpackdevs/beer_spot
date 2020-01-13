@@ -3,8 +3,14 @@
 {% block title %} all beers {% endblock %}
 
 {% block block_1 %}
+<h2>search by brewery</h2>
 <div id="all_beers" >
-{% for brewery in brewerys %}
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" class="btn btn-success" value="search">
+        <a href="{% url 'search_beer' %}" class="btn btn-danger" >search by style or flavor</a>
+    </form>
+{% for brewery in filter.qs %}
     <h2>{{ brewery }}</h2>
     <ul>
         {% for beer in brewery.beer.all %}
