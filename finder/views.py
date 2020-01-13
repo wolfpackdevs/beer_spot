@@ -15,7 +15,46 @@ from . import models
 def dashbord(request):
     if Brewer.objects.filter(user=request.user).exists():
         return redirect('brewer')
-    return render(request, 'finder/dashbord.html')
+    user_pref = models.Preference.objects.filter(user=request.user, like=True).all()
+    liked_beers_v = user_pref[:5]
+    flavors_l = []
+    beer_l = []
+    for pref in user_pref:
+        beer_l.append(pref.beer)
+        for flavor in pref.beer.flavor.all():
+            flavors_l.append(flavor)
+    flavors_l = set(flavors_l)
+    flavors_l_un = list(flavors_l)
+    beer_r = Beer.objects.filter(flavor__in=flavors_l_un).distinct().order_by('-likes')
+    beer_r = beer_r.exclude(id__in=[beer.id for beer in beer_l])[:5]
+    return render(request, 'finder/dashbord.html', {'l_beer': liked_beers_v,
+                                                    'beer_r': beer_r})
+
+
+@login_required
+def all_liked_beer(request):
+    if Brewer.objects.filter(user=request.user).exists():
+        return redirect('brewer')
+    user_pref = models.Preference.objects.filter(user=request.user, like=True).all()
+    return render(request, 'finder/all_liked.html', {'user_pref': user_pref})
+
+
+@login_required
+def all_rec_beer(request):
+    if Brewer.objects.filter(user=request.user).exists():
+        return redirect('brewer')
+    user_pref = models.Preference.objects.filter(user=request.user, like=True).all()
+    flavors_l = []
+    beer_l = []
+    for pref in user_pref:
+        beer_l.append(pref.beer)
+        for flavor in pref.beer.flavor.all():
+            flavors_l.append(flavor)
+    flavors_l = set(flavors_l)
+    flavors_l_un = list(flavors_l)
+    beer_r = Beer.objects.filter(flavor__in=flavors_l_un).distinct().order_by('-likes')
+    beer_r = beer_r.exclude(id__in=[beer.id for beer in beer_l])
+    return render(request, 'finder/all_rec.html', {'beer_r': beer_r})
 
 
 @login_required
@@ -38,7 +77,7 @@ def tutorial_2(request, id):
 
 
 @login_required
-def beer_f_info(request,id):
+def beer_f_info(request, id):
     if Brewer.objects.filter(user=request.user).exists():
         return redirect('brewer')
     beer = Beer.objects.get(id=id)
@@ -58,7 +97,7 @@ def all_beers(request):
 def search_beers(request):
     beer_list = Beer.objects.all()
     beer_filter = filters.BeerFilter(request.GET, queryset=beer_list)
-    return render(request, 'finder/search_beer.html', {'filter':beer_filter})
+    return render(request, 'finder/search_beer.html', {'filter': beer_filter})
 
 
 @login_required

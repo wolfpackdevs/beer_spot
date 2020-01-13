@@ -9,7 +9,7 @@ class AddBeerForm(forms.Form):
                             widget=forms.TextInput(attrs={'class': 'form-control'}))
     flavors = forms.CharField(max_length=400, help_text='place comma after each flavor type',
                               widget=forms.TextInput(attrs={'class': 'form-control'}))
-    image = forms.ImageField(required=False, widget=forms.FileInput(attrs={'class': 'form-control'}))
+    image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control'}))
     abv = forms.FloatField(min_value=0, label='Alcohol by Volume',
                            widget=forms.NumberInput(attrs={'class': 'form-control'}))
     message = forms.CharField(required=False,

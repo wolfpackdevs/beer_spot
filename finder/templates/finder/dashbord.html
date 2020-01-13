@@ -5,4 +5,30 @@
 {% block block_1 %}
 <h1>Welcome {{user.first_name}}</h1>
 <a href="{% url 'edit_viewer' %}" >edit profile information</a>
+<div id="liked_beers">
+    <h3><a href="{% url 'all_liked' %}">liked beers</a></h3>
+    {% for prf in l_beer %}
+    <div class="card text-center" style="width: 18rem;">
+        <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{ prf.beer }}</h5>
+            <p class="card-text">{{ prf.beer.style }}</p>
+            <a href="{% url 'beer_f_info' id=prf.beer.id %}" class="btn btn-primary">more info</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div id="recommended_beer">
+    <h3><a href="{% url 'all_rec' %}">recommended beers</a></h3>
+    {% for beer in beer_r %}
+    <div class="card text-center" style="width: 18rem;">
+        <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
+        <div class="card-body">
+            <h5 class="card-title">{{ beer }}</h5>
+            <p class="card-text">{{ beer.style }}</p>
+            <a href="{% url 'beer_f_info' id=beer.id %}" class="btn btn-primary">more info</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

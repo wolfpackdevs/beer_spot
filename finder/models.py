@@ -19,8 +19,8 @@ class Viewer(models.Model):
 
 
 class Preference(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    beer = models.ForeignKey(Beer, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='like_list')
+    beer = models.ForeignKey(Beer, on_delete=models.CASCADE, related_name='beer_liked')
     like = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now=True)
 

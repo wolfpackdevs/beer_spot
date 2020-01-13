@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block block_1 %}
+<div id="all_rec">
+    <h3>recommended beers</h3>
+    <ul>
+        {% for beer in beer_r %}
+        <li><a href="{%url 'beer_f_info' id=beer.id %}">{{ beer }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
