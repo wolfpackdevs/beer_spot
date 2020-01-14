@@ -13,7 +13,7 @@ class Style(models.Model):
 
 
 class Flavor(models.Model):
-    flavor_note = models.CharField(max_length=200)
+    flavor_note = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
         return f'{self.flavor_note}'

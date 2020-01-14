@@ -27,8 +27,10 @@ def dashbord(request):
     flavors_l_un = list(flavors_l)
     beer_r = Beer.objects.filter(flavor__in=flavors_l_un).distinct().order_by('-likes')
     beer_r = beer_r.exclude(id__in=[beer.id for beer in beer_l])[:5]
+    viewer = models.Viewer.objects.get(user=request.user)
     return render(request, 'finder/dashbord.html', {'l_beer': liked_beers_v,
-                                                    'beer_r': beer_r})
+                                                    'beer_r': beer_r,
+                                                    'viewer': viewer})
 
 
 @login_required

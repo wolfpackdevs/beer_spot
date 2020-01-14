@@ -4,16 +4,18 @@
 
 {% block block_1 %}
 <div id="brewer_beer">
+    <div class="row">
     {% for beer in beers %}
-    <div class="card text-center" style="width: 18rem;">
-        <img src="{{ beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
-        <div class="card-body">
-            <h5 class="card-title">{{ beer.name }}</h5>
-            <p class="card-text">{{ beer.style }}</p>
-            <a href="{% url 'beer_info_1' id=beer.id %}" class="btn btn-primary">more info</a>
-            <a href="{% url 'change_beer' id=beer.id %}" class="btn btn-danger">change info</a>
+        <div class="card text-center col-md-4" style="width: 18rem;">
+            <img src="{{ beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
+            <div class="card-body">
+                <h5 class="card-title">{{ beer.name }}</h5>
+                <p class="card-text">{{ beer.style }}</p>
+                <a href="{% url 'beer_info_1' id=beer.id %}" class="btn btn-primary">more info</a>
+                <a href="{% url 'change_beer' id=beer.id %}" class="btn btn-danger">change info</a>
+            </div>
         </div>
-    </div>
     {% endfor %}
+    </div>
 </div>
 {%endblock%}

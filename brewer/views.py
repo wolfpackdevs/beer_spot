@@ -26,11 +26,12 @@ def add_beer(request):
             brewer = Brewer.objects.get(user=request.user)
             brewery = brewer.brewery
             image = form.cleaned_data['image']
+            message = form.cleaned_data['message']
             style, created = models.Style.objects.get_or_create(style=style_new)
             for flavor in flavors_new:
-                f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor)
+                f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor.strip().capitalize())
                 flavors.append(f_new)
-            beer = models.Beer(name=name, image=image, brewery=brewery, style=style, abv=abv)
+            beer = models.Beer(name=name, image=image, brewery=brewery, style=style, abv=abv, message=message)
             beer.save()
             beer.flavor.add(*flavors)
             return redirect('brewer')
@@ -43,7 +44,7 @@ def add_beer(request):
 def brewer_beer(request):
     brewer = Brewer.objects.get(user=request.user)
     brewery = brewer.brewery
-    beers = models.Beer.objects.filter(brewery=brewery).all()
+    beers = models.Beer.objects.filter(brewery=brewery).all().order_by('-likes')
     return render(request, 'brewer/brewers_beer.html', {'beers': beers, 'brewery': brewery})
 
 
@@ -63,7 +64,7 @@ def change_beer(request, id):
             flavors = []
             flavors_new = (form.cleaned_data['flavor']).split(',')
             for flavor in flavors_new:
-                f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor)
+                f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor.strip().capitalize())
                 flavors.append(f_new)
             beer.image = form.cleaned_data['image']
             beer.flavor.clear()
