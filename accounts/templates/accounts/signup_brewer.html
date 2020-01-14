@@ -3,15 +3,18 @@
 {% block title %}brewer sign up{% endblock %}
 
 {% block block_1 %}
-<div id="sign_up" >
-    <h2>Sign up your Brewery </h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+<div id="sign_up" class="container">
+	<div class="row">
+		<h2>Sign up your Brewery </h2>
+		<hr>
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
 
-        {{ form.as_p }}
+			{{ form.as_p }}
 
-        <input type="submit" class="btn btn-success" value="Sign up">
+			<input type="submit" class="btn btn-warning" value="Sign up">
 
-    </form>
+		</form>
+	</div>
 </div>
 {% endblock %}

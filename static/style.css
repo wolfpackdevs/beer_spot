@@ -1,0 +1,40 @@
+body{
+	background-color: rgb(158, 102, 0);
+}
+
+#home{
+	height: 92vh;
+	border: 2px solid black;
+	background-image: url(landing.jpeg);
+	background-size:contain;
+	color: white;
+	text-align: center;
+}
+
+#welcome{
+	margin-top:30vh;
+}
+
+#login{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 20vh;
+	align-self: center;
+	width: 50%;
+	background-color: rgba(138, 128, 128, .6);
+}
+
+
+#sign_up{
+	width: 50%;
+	align-self: center;
+	margin-top: 10vh;
+	color: white;
+	background-color: rgba(138, 128, 128, .6);
+}
+
+#sign_up h2{
+	text-align: center;
+}
+

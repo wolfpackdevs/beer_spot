@@ -3,12 +3,14 @@
 {% block title %} log in {% endblock %}
 
 {% block block_1 %}
-<div id="login" >
-    <h2>Login</h2>
-        <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="login">
-    </form>
+<div class="container" id="login">
+	<div>
+		<h2>Login</h2>
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" class="btn btn-success" value="login">
+		</form>
+	</div>
 </div>
 {% endblock %}
