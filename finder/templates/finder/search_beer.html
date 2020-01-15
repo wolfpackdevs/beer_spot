@@ -3,17 +3,17 @@
 {% block title %}search beer{% endblock %}
 
 {% block block_1 %}
-<div id="search">
+<div id="search" class="container">
     <h2>search by style and flavor</h2>
     <form method="get">
         {{ filter.form.as_p }}
-        <input type="submit" class="btn btn-success" >
+        <input type="submit" class="btn btn-warning btn-outline-dark" >
     </form>
 
 
     <ul>
         {% for beer in filter.qs %}
-        <li><a href="{% url 'beer_f_info' id=beer.id %}" >{{ beer }}</a></li>
+        <li><a href="{% url 'beer_f_info' id=beer.id %}" class="text-dark" >{{ beer }}</a></li>
         {% endfor %}
     </ul>
 </div>

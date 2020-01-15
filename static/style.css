@@ -24,6 +24,7 @@ body{
 	align-self: center;
 	width: 50%;
 	background-color: rgba(138, 128, 128, .6);
+	border: 1px solid black;
 }
 
 
@@ -33,6 +34,8 @@ body{
 	margin-top: 5vh;
 	color: white;
 	background-color: rgba(138, 128, 128, .6);
+	border: 1px solid black;
+	align-self: center;
 }
 
 #sign_up h2{
@@ -47,11 +50,13 @@ body{
 .beer-card{
 	background-color: rgb(172, 96, 0);
 	color: white;
+	display: flex;
 }
 
 .beer-card img{
 	height: 200px;
 	width: 200px;
+	align-self: center;
 }
 
 #beer_info{
@@ -78,6 +83,7 @@ body{
 	color: white;
 }
 
+
 #beer_f_info {
 	color: white;
 }
@@ -98,3 +104,16 @@ body{
 #edit_brewery a{
 	color:black;
 }
+
+#edit_brewer {
+	width: 50%;
+	align-self: center;
+	margin-top: 5vh;
+	color: white;
+	background-color: rgba(138, 128, 128, .6);
+}
+
+#beer_info img{
+	margin-left: 25vh;
+}
+

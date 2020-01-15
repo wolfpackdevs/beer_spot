@@ -9,7 +9,7 @@
         <h4>By style</h4>
         <ul>
             {% for beer in beers_s %}
-            <li><a href="{%url 'beer_f_info' id=beer.id %}" >{{beer}}</a></li>
+            <li><a href="{%url 'beer_f_info' id=beer.id %}" class="text-dark" >{{beer}}</a></li>
             {% endfor %}
         </ul>
         <h4>by flavor</h4>

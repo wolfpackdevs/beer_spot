@@ -5,18 +5,21 @@
 
 {% block block_1 %}
 <div id="beer_info">
-    <h1>{{ beer }}</h1>
-    <hr>
-    <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
-    <h3>{{ beer.style }}</h3>
-    <h3>flavors</h3>
-    <ul>
-        {% for flavor in beer.flavor.all %}
-        <li>{{ flavor }}</li>
-        {%endfor%}
-    </ul>
-    <h3>abv: {{beer.abv}}%</h3>
-    <h3>likes: {{ beer.likes }} </h3>
-    <a href="{% url 'brewers_beer' %}" class="btn btn-dark btn-outline-warning btn-sm">go back</a>
+    <div class="container">
+        <h1>{{ beer }}</h1>
+        <hr>
+        <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
+        <hr>
+        <h3>{{ beer.style }}</h3>
+        <h3>flavors</h3>
+        <ul>
+            {% for flavor in beer.flavor.all %}
+            <li>{{ flavor }}</li>
+            {%endfor%}
+        </ul>
+        <h3>abv: {{beer.abv}}%</h3>
+        <h3>likes: {{ beer.likes }} </h3>
+        <a href="{% url 'brewers_beer' %}" class="btn btn-dark btn-outline-warning btn-sm">go back</a>
+    </div>
 </div>
 {% endblock %}

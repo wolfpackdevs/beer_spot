@@ -3,20 +3,20 @@
 {% block title %} all beers {% endblock %}
 
 {% block block_1 %}
-<h2>search by brewery</h2>
-<div id="all_beers" >
+<div id="all_beers" class="container">
+    <h2>search by brewery</h2>
     <form method="get">
         {{ filter.form.as_p }}
-        <input type="submit" class="btn btn-success" value="search">
-        <a href="{% url 'search_beer' %}" class="btn btn-danger" >search by style or flavor</a>
+        <input type="submit" class="btn btn-warning" value="search">
+        <a href="{% url 'search_beer' %}" class="btn btn-dark btn-outline-warning" >search by style or flavor</a>
     </form>
-{% for brewery in filter.qs %}
+    {% for brewery in filter.qs %}
     <h2>{{ brewery }}</h2>
     <ul>
         {% for beer in brewery.beer.all %}
-        <li><a href="{% url 'beer_f_info' id=beer.id %}">{{ beer }}</a></li>
+        <li><a href="{% url 'beer_f_info' id=beer.id %}" class="text-dark">{{ beer }}</a></li>
         {% endfor %}
     </ul>
-{% endfor %}
+    {% endfor %}
 </div>
 {%endblock%}

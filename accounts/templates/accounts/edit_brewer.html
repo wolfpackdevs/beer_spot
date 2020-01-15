@@ -3,12 +3,12 @@
 {% block title %}edit brewer{% endblock %}
 
 {% block block_1 %}
-<div id="edit_brewer">
+<div id="edit_brewer" class="container">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="edit">
+        <input type="submit" class="btn btn-warning" value="edit">
     </form>
-    <a href="{% url 'change_password' %}">change password</a>
+    <a href="{% url 'change_password' %}" class="btn btn-dark btn-sm btn-outline-warning">change password</a>
 </div>
 {% endblock %}

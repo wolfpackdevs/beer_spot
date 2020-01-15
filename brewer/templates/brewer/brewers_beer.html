@@ -6,8 +6,8 @@
 <div id="brewer_beer">
     <div class="row">
     {% for beer in beers %}
-        <div class="card text-center col-md-4 beer-card" style="width: 18rem;">
-            <img src="{{ beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
+        <div class="card text-center col-md-4 beer-card shadow-lg" style="width: 18rem;">
+            <img src="{{ beer.image.url }}" class="card-img-top shadow-lg" alt="{{beer.name}}">
             <div class="card-body">
                 <h5 class="card-title">{{ beer.name }}</h5>
                 <p class="card-text">{{ beer.style }}</p>
