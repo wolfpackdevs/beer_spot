@@ -4,11 +4,14 @@
 
 {% block block_1 %}
 <div id="add_beer">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+	<div class="container">
+		<h1>Add a New Beer</h1>
+	    <form method="post" enctype="multipart/form-data">
+	        {% csrf_token %}
 
-        {{form.as_p}}
-        <input type="submit" value="add Beer" class="btn btn-success">
-    </form>
+	        {{form.as_p}}
+	        <input type="submit" value="add Beer" class="btn btn-dark btn-outline-warning">
+	    </form>
+	</div>
 </div>
 {% endblock %}

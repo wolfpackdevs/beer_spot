@@ -4,34 +4,36 @@
 
 
 {% block block_1 %}
-    {% if messages %}
-        {% for message in messages %}
-            <h4{% if message.tags %} class="alert alert-danger" {% endif %}>{{ message }}</h4>
-        {% endfor %}
-    {% endif %}
+{% if messages %}
+{% for message in messages %}
+<h4{% if message.tags %} class="alert alert-danger" {% endif %}>{{ message }}</h4>
+{% endfor %}
+{% endif %}
 <div id="beer_f_info">
-    <h1>{{ beer }}</h1>
-    <hr>
-    <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
-    <hr>
-    <a href="{% url 'like' id=beer.id %}" class="btn btn-primary">like</a>
-    <a href="{% url 'dislike' id=beer.id %}" class="btn btn-danger">dislike</a>
-    <h3>{{ beer.style }}</h3>
-    <h3>flavors</h3>
-    <ul>
-        {% for flavor in beer.flavor.all %}
-        <li>{{ flavor }}</li>
-        {%endfor%}
-    </ul>
-    <h3>abv: {{beer.abv}}%</h3>
-    <h3>is the beer available?</h3>
-    {% if beer.is_available %}
+    <div class="container">
+        <h1>{{ beer }}</h1>
+        <hr>
+        <img src="{{ beer.image.url }}" alt="{{beer.name}}" height="300" width="300">
+        <hr>
+        <a href="{% url 'like' id=beer.id %}" class="btn btn-warning">like</a>
+        <a href="{% url 'dislike' id=beer.id %}" class="btn btn-dark btn-outline-warning">dislike</a>
+        <h3>{{ beer.style }}</h3>
+        <h3>Flavors</h3>
+        <ul>
+            {% for flavor in beer.flavor.all %}
+            <li>{{ flavor }}</li>
+            {%endfor%}
+        </ul>
+        <h3>abv: {{beer.abv}}%</h3>
+        <h3>is theis Beer available?</h3>
+        {% if beer.is_available %}
         <p>yes</p>
-    {% else %}
+        {% else %}
         <P>no</P>
-    {% endif %}
-    <h3>message from the brewer:</h3>
-    <p>{{beer.message}}</p>
+        {% endif %}
+        <h3>message from the brewer:</h3>
+        <p>{{beer.message}}</p>
+    </div>
 </div>
 
 {% endblock %}

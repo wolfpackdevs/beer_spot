@@ -16,6 +16,7 @@
         {%endfor%}
     </ul>
     <h3>abv: {{beer.abv}}%</h3>
-    <a href="{% url 'brewers_beer' %}">go back</a>
+    <h3>likes: {{ beer.likes }} </h3>
+    <a href="{% url 'brewers_beer' %}" class="btn btn-dark btn-outline-warning btn-sm">go back</a>
 </div>
 {% endblock %}

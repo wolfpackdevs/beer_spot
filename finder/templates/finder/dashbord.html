@@ -3,44 +3,46 @@
 {% block title %} {{ user.username }}'s dashbord {% endblock %}
 
 {% block block_1 %}
-<h1>Welcome {{user.first_name}}</h1>
-<img src="{{viewer.picture.url}}" height="150px" width="150px" >
-<br>
-<a href="{% url 'edit_viewer' %}" >edit profile</a>
-<hr>
-<div id="liked_beers" class="text-center">
-    <h3><a href="{% url 'all_liked' %}">liked beers</a></h3>
-    <div class="container">
-        <div class="row">
-            {% for prf in l_beer %}
-            <div class="card text-center col-md-4 shadow-lg" style="width: 18rem;">
-                <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ prf.beer }}</h5>
-                    <p class="card-text">{{ prf.beer.style }}</p>
-                    <a href="{% url 'beer_f_info' id=prf.beer.id %}" class="btn btn-primary">more info</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<div id="recommended_beer" class="text-center">
-    <h3><a href="{% url 'all_rec' %}">recommended beers</a></h3>
-    <div class="container">
-        <div class="row">
-            {% for beer in beer_r %}
-            <div class="card text-center col-md-4 shadow-lg" style="width: 18rem;">
-                <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
-                <div class="card-body">
-                    <h5 class="card-title">{{ beer }}</h5>
-                    <p class="card-text">{{ beer.style }}</p>
-                    <div class="card-bottom">
-                        <a href="{% url 'beer_f_info' id=beer.id %}" class="btn btn-primary">more info</a>
+<div id="dashbord">
+    <h1 class="text-white">Welcome {{user.first_name}}</h1>
+    <img src="{{viewer.picture.url}}" height="150px" width="150px" >
+    <br>
+    <a href="{% url 'edit_viewer' %}" class="btn btn-warning btn-sm" >edit profile</a>
+    <hr>
+    <div id="liked_beers" class="text-center">
+        <h3><a href="{% url 'all_liked' %}" class="text-dark">liked beers</a></h3>
+        <div class="container">
+            <div class="row">
+                {% for prf in l_beer %}
+                <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
+                    <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ prf.beer }}</h5>
+                        <p class="card-text">{{ prf.beer.style }}</p>
+                        <a href="{% url 'beer_f_info' id=prf.beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+        </div>
+    </div>
+    <div id="recommended_beer" class="text-center">
+        <h3><a href="{% url 'all_rec' %}" class="text-dark">recommended beers</a></h3>
+        <div class="container">
+            <div class="row">
+                {% for beer in beer_r %}
+                <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
+                    <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
+                    <div class="card-body">
+                        <h5 class="card-title">{{ beer }}</h5>
+                        <p class="card-text">{{ beer.style }}</p>
+                        <div class="card-bottom">
+                            <a href="{% url 'beer_f_info' id=beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

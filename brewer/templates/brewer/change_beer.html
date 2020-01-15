@@ -5,12 +5,15 @@
 
 {%block block_1%}
 <div id="change_beer">
-    <h1>{{ beer.name }}</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
+	<div class="container">
+	    <h1>{{ beer.name }}</h1>
+	    <form method="post" enctype="multipart/form-data">
+	        {% csrf_token %}
 
-        {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="update">
-    </form>
+	        {{ form.as_p }}
+	        <input type="submit" class="btn btn-dark btn-outline-warning" value="update">
+	        <a href="{% url 'brewers_beer' %}" class="btn btn-warning btn-sm" >go back</a>
+	    </form>
+	</div>
 </div>
 {% endblock %}

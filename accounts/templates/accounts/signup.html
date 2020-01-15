@@ -5,13 +5,13 @@
 {% block block_1 %}
 <div id="sign_up" class="container">
     <h2>Sign up</h2>
-    <p>Are you a brewer? <a href="{% url 'signup_brewer' %}">sign up here</a></p>
+    <p>Are you a brewer? sign up <a href="{% url 'signup_brewer' %}" class="btn btn-warning btn-sm">here</a></p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form.as_p }}
 
-        <input type="submit" class="btn btn-success" value="Sign up">
+        <input type="submit" class="btn btn-dark btn-outline-warning" value="Sign up">
     </form>
 </div>
 {% endblock %}

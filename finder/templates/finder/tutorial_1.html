@@ -4,24 +4,30 @@
 
 {% block block_1 %}
 <div id="tutorial_1">
-    <h2>Read the following instructions</h2>
-    <ol>
-        <li>something</li>
-    </ol>
-    <div id="Gen_beer">
-        {% for beer in g_beer %}
-        <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="{{beer.image.url}}" alt="Card image cap" height="250" width="250">
-            <div class="card-body">
-                <h5 class="card-title">{{beer.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{beer.style}}</h6>
-                {% for flavor in beer.flavor.all %}
-                <p class="card-text">{{flavor}}</p>
-                {% endfor %}
-                <a href="{% url 'tutorial_2' id=beer.id  %}" class="btn btn-primary">next step</a>
+    <div class="container">
+        <h2>Read the following instructions</h2>
+        <ol>
+            <li>pick which beer you would buy at the store</li>
+            <li>clik on the beer that looks interesting</li>
+            <li>if you like the beer click on the like button</li>
+        </ol>
+    </div>
+    <div id="Gen_beer" class="container">
+        <div class="row ">
+            {% for beer in g_beer %}
+            <div class="card text-center col-md-4 beer-card" style="width: 18rem;">
+                <img class="card-img-top" src="{{beer.image.url}}" alt="Card image cap" height="250" width="250">
+                <div class="card-body">
+                    <h5 class="card-title">{{beer.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-dark">{{beer.style}}</h6>
+                    {% for flavor in beer.flavor.all %}
+                    <p class="card-text">{{flavor}}</p>
+                    {% endfor %}
+                    <a href="{% url 'tutorial_2' id=beer.id  %}" class="btn btn-dark btn-outline-warning">next step</a>
+                </div>
             </div>
-        </div>
         {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

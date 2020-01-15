@@ -4,19 +4,21 @@
 
 {% block block_1 %}
 <div id="tutorial_2">
-    <a href="{% url 'tutorial_1' %}" ><button>go back</button></a>
-    <h2> micro brews you might like </h2>
-    <h4>By style</h4>
-    <ul>
-        {% for beer in beers_s %}
-        <li><a href="{%url 'beer_f_info' id=beer.id %}" >{{beer}}</a></li>
-        {% endfor %}
-    </ul>
-    <h4>by flavor</h4>
-    <ul>
-        {% for beer in beers_f %}
-        <li><a href="{% url 'beer_f_info' id=beer.id %}">{{beer}}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2> micro brews you might like </h2>
+        <h4>By style</h4>
+        <ul>
+            {% for beer in beers_s %}
+            <li><a href="{%url 'beer_f_info' id=beer.id %}" >{{beer}}</a></li>
+            {% endfor %}
+        </ul>
+        <h4>by flavor</h4>
+        <ul>
+            {% for beer in beers_f %}
+            <li><a href="{% url 'beer_f_info' id=beer.id %}" class="text-dark">{{beer}}</a></li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'tutorial_1' %}" class="btn btn-dark btn-sm btn-outline-warning" >go back</a>
+    </div>
 </div>
 {% endblock %}

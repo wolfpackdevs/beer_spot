@@ -4,15 +4,16 @@ body{
 
 #home{
 	height: 92vh;
-	border: 2px solid black;
 	background-image: url(landing.jpeg);
 	background-size:contain;
 	color: white;
 	text-align: center;
+
 }
 
 #welcome{
-	margin-top:30vh;
+	padding-top:30vh;
+	
 }
 
 #login{
@@ -29,7 +30,7 @@ body{
 #sign_up{
 	width: 50%;
 	align-self: center;
-	margin-top: 10vh;
+	margin-top: 5vh;
 	color: white;
 	background-color: rgba(138, 128, 128, .6);
 }
@@ -38,3 +39,62 @@ body{
 	text-align: center;
 }
 
+#sign_up a{
+	text-decoration: none;
+	color: white;
+}
+
+.beer-card{
+	background-color: rgb(172, 96, 0);
+	color: white;
+}
+
+.beer-card img{
+	height: 200px;
+	width: 200px;
+}
+
+#beer_info{
+	color: white;
+}
+
+#change_beer{
+	color: white;
+}
+
+#change_beer h1{
+	text-align: center;
+}
+
+#tutorial_1{
+	color: white;
+}
+
+#tutorial_1 h2{
+	text-align: center;
+}
+
+#tutorial_2 {
+	color: white;
+}
+
+#beer_f_info {
+	color: white;
+}
+
+#beer_f_info img {
+	margin-left: 25vh; 
+}
+
+
+#edit_brewery{
+	width: 50%;
+	align-self: center;
+	margin-top: 5vh;
+	color: white;
+	background-color: rgba(138, 128, 128, .6);
+}
+
+#edit_brewery a{
+	color:black;
+}

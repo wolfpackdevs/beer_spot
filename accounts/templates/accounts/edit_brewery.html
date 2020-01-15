@@ -1,14 +1,14 @@
 {% extends 'brewer/brewer.html' %}
 
-{% block title %}edit profile{% endblock %}
+{% block title %}edit brewery{% endblock %}
 
 
 {% block block_1 %}
-<div id="edit_profile">
+<div id="edit_brewery" class="container">
     <form method="post">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="change information" class="btn btn-success">
+        <input type="submit" value="change information" class="btn btn-dark btn-outline-warning">
     </form>
 </div>
 {% endblock %}
