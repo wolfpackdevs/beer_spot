@@ -5,7 +5,7 @@
 {% block block_1 %}
 <div id="sign_up" class="container">
     <h2>Sign up</h2>
-    <p>Are you a brewer? sign up <a href="{% url 'signup_brewer' %}" class="btn btn-warning btn-sm">here</a></p>
+    <p>Are you a brewer? sign up <a href="{% url 'signup_brewer' %}" class="btn btn-warning btn-outline-dark btn-sm text-dark">here</a></p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 

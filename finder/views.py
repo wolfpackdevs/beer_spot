@@ -16,6 +16,11 @@ def dashbord(request):
     if Brewer.objects.filter(user=request.user).exists():
         return redirect('brewer')
     user_pref = models.Preference.objects.filter(user=request.user, like=True).all()
+    viewer = models.Viewer.objects.get(user=request.user)
+    if viewer.first_use:
+        viewer.first_use = False
+        viewer.save()
+        return redirect('tutorial_1')
     liked_beers_v = user_pref[:5]
     flavors_l = []
     beer_l = []

@@ -6,6 +6,7 @@ from brewer.models import Beer
 # Create your models here.
 
 class Viewer(models.Model):
+    first_use = models.BooleanField(default=True)
     is_brewer = models.BooleanField(default=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='profiles/images/%Y/%m/%d', default='default/images/default.png',
