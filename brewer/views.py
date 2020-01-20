@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from . import forms, models
+from . import forms, models, decorators
 from accounts.models import Brewer
 
 
@@ -8,12 +8,14 @@ from accounts.models import Brewer
 
 
 @login_required
+@decorators.brewers_only
 def brewer_dashbord(request):
     brewer = Brewer.objects.get(user=request.user)
     return render(request, 'brewer/brewer.html', {'brewer': brewer})
 
 
 @login_required
+@decorators.brewers_only
 def add_beer(request):
     if request.method == 'POST':
         form = forms.AddBeerForm(request.POST, request.FILES)
@@ -41,6 +43,7 @@ def add_beer(request):
 
 
 @login_required
+@decorators.brewers_only
 def brewer_beer(request):
     brewer = Brewer.objects.get(user=request.user)
     brewery = brewer.brewery
@@ -49,12 +52,14 @@ def brewer_beer(request):
 
 
 @login_required
+@decorators.brewers_only
 def beer_info(request, id):
     beer = models.Beer.objects.get(id=id)
     return render(request, 'brewer/beer_info.html', {'beer': beer})
 
 
 @login_required
+@decorators.brewers_only
 def change_beer(request, id):
     beer = models.Beer.objects.get(id=id)
     if request.method == 'POST':

@@ -3,11 +3,11 @@
 {% block title %}{{ user.username }}{% endblock %}
 
 {% block block_1 %}
-<div id="all_rec">
-    <h3>recommended beers</h3>
+<div id="all_rec" class="container">
+    <h3 class="text-white">recommended beers</h3>
     <ul>
         {% for beer in beer_r %}
-        <li><a href="{%url 'beer_f_info' id=beer.id %}">{{ beer }}</a></li>
+        <li><a href="{%url 'beer_f_info' id=beer.id %}" class="text-dark">{{ beer }}</a></li>
         {% endfor %}
     </ul>
 </div>

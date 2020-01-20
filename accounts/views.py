@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 from . import forms, models
 from finder.models import Viewer
+from finder.decorators import viewers_only
 
 
 # Create your views here.
@@ -96,9 +97,10 @@ def change_password(request):
 
 
 @login_required
+@viewers_only
 def edit_viewer(request):
-    if models.Brewer.objects.filter(user=request.user).exists():
-        return redirect('brewer')
+    # if models.Brewer.objects.filter(user=request.user).exists():
+    #     return redirect('brewer')
     if request.method == 'POST':
         form = forms.EditViewerInfo(request.POST, instance=request.user)
         if form.is_valid():

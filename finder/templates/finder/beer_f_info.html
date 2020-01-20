@@ -15,7 +15,9 @@
         <hr>
         <img src="{{ beer.image.url }}" alt="{{beer.name}}" title={{beer.name}} height="300" width="300" class="shadow-lg">
         <hr>
+        {{beer.likes}}
         <a href="{% url 'like' id=beer.id %}" class="btn btn-warning">like</a>
+        {{beer.dislikes}}
         <a href="{% url 'dislike' id=beer.id %}" class="btn btn-dark btn-outline-warning">dislike</a>
         <h3>{{ beer.style }}</h3>
         <h3>Flavors</h3>
@@ -25,7 +27,7 @@
             {%endfor%}
         </ul>
         <h3>abv: {{beer.abv}}%</h3>
-        <h3>is theis Beer available?</h3>
+        <h3>Is This Beer available?</h3>
         {% if beer.is_available %}
         <p>yes</p>
         {% else %}

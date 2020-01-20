@@ -3,10 +3,12 @@
 {% block title %}{{user.username}}'s liked beer{% endblock %}
 
 {% block block_1 %}
-<h2>liked beers</h2>
-<ul>
-{% for pref in user_pref %}
-    <li><a href="{% url 'beer_f_info' id=pref.beer.id %}" >{{pref.beer}}</a></li>
-{% endfor %}
-</ul>
+<div class="container" id="all_liked">
+	<h2 class="text-white">liked beers</h2>
+	<ul>
+		{% for pref in user_pref %}
+		<li><a href="{% url 'beer_f_info' id=pref.beer.id %}" class="text-dark">{{pref.beer}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
 {% endblock %}
