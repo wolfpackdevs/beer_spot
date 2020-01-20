@@ -3,6 +3,11 @@
 {% block title %}edit brewer{% endblock %}
 
 {% block block_1 %}
+{% if messages %}
+    {% for message in messages %}
+        <h4{% if message.tags %} class="alert alert-warning"{% endif %}>{{ message }} </h4>
+    {% endfor %}
+{% endif %}
 <div id="edit_brewer" class="container">
     <form method="post">
         {% csrf_token %}

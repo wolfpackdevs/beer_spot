@@ -4,26 +4,50 @@
 
 {% block nav %}
 <div id="nav_bar" >
-        <nav class="navbar sticky-top navbar-dark bg-dark">
-         <a class="navbar-brand" href="#">
-            <img src="https://i.ebayimg.com/images/g/O8UAAOSwj4Vcfsfc/s-l300.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
-            Beer placer
-         </a>
-        <nav class="nav justify-content-end">
-            <a class="nav-link" href="{% url 'dashbord' %}">profile</a>
-            <a class="nav-link" href="{%url 'add_beer'%}">add beer</a>
-            <a class="nav-link" href="{% url 'brewers_beer' %}">your beers</a>
-            <a class="nav-link" href="#">contact admin</a>
-            <a class="nav-link " href="{% url 'logout' %}"  >Logout</a>
-        </nav>
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+       <a class="navbar-brand" href="#">
+        <img src="https://i.ebayimg.com/images/g/O8UAAOSwj4Vcfsfc/s-l300.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Beer placer
+    </a>
+    <nav class="nav justify-content-end">
+        <a class="nav-link" href="{% url 'dashbord' %}">profile</a>
+        <a class="nav-link" href="{%url 'add_beer'%}">add beer</a>
+        <a class="nav-link" href="{% url 'brewers_beer' %}">your beers</a>
+        <a class="nav-link" href="{% url 'contact_admin' %}">contact admin</a>
+        <a class="nav-link " href="{% url 'logout' %}"  >Logout</a>
     </nav>
+</nav>
 </div>
 {% endblock %}
 
 
 {% block block_1 %}
+<div id='brewer_dash'>
     <img src="{{ brewer.brewery.logo.url }}" class="rounded-circle" height="100" width="100">
     <h1>{{ brewer.brewery.name }}</h1>
-        <a href="{% url 'edit_brewer' %}" class="btn btn-warning">edit information</a>
-        <a href="{% url 'edit_brewery' %}" class="btn btn-dark btn-outline-warning">edit brewery info</a>
+    <a href="{% url 'edit_brewer' %}" class="btn btn-warning">edit information</a>
+    <a href="{% url 'edit_brewery' %}" class="btn btn-dark btn-outline-warning">edit brewery info</a>
+    <hr>
+    <div id="brewer_dash_body" class="text-center">
+        <h2>most liked beer</h2>
+        <hr>
+        <div class="container">
+            <div class="row">
+                {% for beer in beers %}
+                <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
+                    <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ beer.name }}</h5>
+                        <p class="card-text">{{ beer.style }}</p>
+                        <p>likes:{{beer.likes}}</p>
+                        <a href="{% url 'beer_info_1' id=beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
+                        <a href="{% url 'change_beer' id=beer.id %}" class="btn btn-warning">change info</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        }
+    </div>
+</div>
+</div>
 {% endblock %}

@@ -24,7 +24,7 @@ class Flavor(models.Model):
 
 class GenericBeer(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='g_beer/images/%Y/%m/%d', default='default/images/default.png',
+    image = models.ImageField(upload_to='g_beer/images/%Y/%m/%d', default='default.png',
                               null=True, blank=True)
     style = models.ForeignKey(Style, on_delete=models.CASCADE)
     flavor = models.ManyToManyField(Flavor)
@@ -33,7 +33,7 @@ class GenericBeer(models.Model):
 
 class Beer(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='beer/images/%Y/%m/%d', default='default/images/default.png',
+    image = models.ImageField(upload_to='beer/images/%Y/%m/%d', default='default.png',
                               null=True, blank=True)
     brewery = models.ForeignKey(Brewery, on_delete=models.CASCADE, related_name='beer')
     style = models.ForeignKey(Style, on_delete=models.CASCADE, related_name='style_type')

@@ -20,6 +20,7 @@ def signup(request):
             username = form.cleaned_data['username']
             raw_psw = form.cleaned_data['password1']
             picture = form.cleaned_data['picture']
+            print(picture)
             user = authenticate(username=username, password=raw_psw)
             viewer = Viewer(user=user, picture=picture)
             viewer.save()
@@ -99,13 +100,25 @@ def change_password(request):
 @login_required
 @viewers_only
 def edit_viewer(request):
-    # if models.Brewer.objects.filter(user=request.user).exists():
-    #     return redirect('brewer')
     if request.method == 'POST':
         form = forms.EditViewerInfo(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'your information has been updated')
     else:
         form = forms.EditViewerInfo(instance=request.user)
     return render(request, 'accounts/edit_viewer.html', {'form': form})
 
+
+@login_required
+@viewers_only
+def change_viewer_pic(request):
+    viewer = Viewer.objects.get(user=request.user)
+    if request.method == 'POST':
+        form = forms.EditViewerPic(request.POST, request.FILES, instance=viewer)
+        if form.is_valid():
+            form.save()
+            return redirect('dashbord')
+    else:
+        form = forms.EditViewerPic(instance=viewer)
+    return render(request, 'accounts/edit_viewer_pic.html', {'form': form})

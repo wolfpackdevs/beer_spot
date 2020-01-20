@@ -9,7 +9,7 @@ from finder.models import Viewer
 
 class SignUpForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    picture = forms.ImageField(required=False,
+    picture = forms.ImageField(required=True,
                                widget=(forms.FileInput(attrs={'class': 'form-control'})))
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional',
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -53,9 +53,12 @@ class EditBrewer(forms.ModelForm):
 
 
 class EditViewerInfo(forms.ModelForm):
-
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
 
 
+class EditViewerPic(forms.ModelForm):
+    class Meta:
+        model = Viewer
+        fields = ('picture',)

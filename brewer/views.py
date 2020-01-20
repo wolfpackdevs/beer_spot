@@ -11,7 +11,9 @@ from accounts.models import Brewer
 @decorators.brewers_only
 def brewer_dashbord(request):
     brewer = Brewer.objects.get(user=request.user)
-    return render(request, 'brewer/brewer.html', {'brewer': brewer})
+    beers = models.Beer.objects.filter(brewery=brewer.brewery).order_by('-likes')[:6]
+    return render(request, 'brewer/brewer.html', {'brewer': brewer,
+                                                  'beers': beers})
 
 
 @login_required
@@ -80,3 +82,8 @@ def change_beer(request, id):
         form = forms.ChangeBeerForm(instance=beer)
     return render(request, 'brewer/change_beer.html', {'beer': beer,
                                                        'form': form})
+
+@login_required
+@decorators.brewers_only
+def contact_admin(request):
+    return render(request, 'brewer/contact_admin.html')

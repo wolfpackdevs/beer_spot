@@ -119,3 +119,25 @@ body{
 	margin-left: 25vh;
 }
 
+#contact{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	margin-top: 20vh;
+	margin-left:20%;
+	align-self: center;
+	width: 50%;
+	border: 1px solid black;
+}
+
+#change_password{
+	margin-top: 10vh;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20%;
+}
+
+#change_pic{
+	margin-top: 25vh;
+}

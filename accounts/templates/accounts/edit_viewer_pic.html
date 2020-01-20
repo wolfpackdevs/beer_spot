@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block title %}change picture{% endblock %}
+
+
+{% block block_1 %}
+<div id="change_pic" class="container text-white">
+	<h2>change profile picture</h2>
+    <form method="post">
+        {{ form.as_p }}
+        <input type="submit" value="update pic" class="btn btn-dark btn-outline-warning">
+    </form>
+</div>
+{% endblock %}

@@ -3,14 +3,19 @@
 {% block title %}edit profile{% endblock %}
 
 {% block block_1 %}
-<div id="edit_viewer">
+{% if messages %}
+    {% for message in messages %}
+        <h4{% if message.tags %} class="alert alert-warning"{% endif %}>{{ message }} </h4>
+    {% endfor %}
+{% endif %}
+<div id="edit_viewer" class="container">
     <form method="post">
         {% csrf_token %}
 
         {{ form.as_p }}
 
-        <input type="submit" value="edit info" class="btn btn-success">
+        <input type="submit" value="edit info" class="btn btn-dark btn-outline-warning">
+        <a href="{% url 'change_password' %}" class="btn btn-warning">change password</a>
     </form>
-     <a href="{% url 'change_password' %}">change password</a>
 </div>
 {% endblock %}

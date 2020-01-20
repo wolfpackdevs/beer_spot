@@ -19,7 +19,7 @@ def dashbord(request):
         viewer.first_use = False
         viewer.save()
         return redirect('tutorial_1')
-    liked_beers_v = user_pref[:5]
+    liked_beers_v = user_pref[:6]
     flavors_l = []
     beer_l = []
     for pref in user_pref:
@@ -29,7 +29,7 @@ def dashbord(request):
     flavors_l = set(flavors_l)
     flavors_l_un = list(flavors_l)
     beer_r = Beer.objects.filter(flavor__in=flavors_l_un).distinct().order_by('-likes')
-    beer_r = beer_r.exclude(id__in=[beer.id for beer in beer_l])[:5]
+    beer_r = beer_r.exclude(id__in=[beer.id for beer in beer_l])[:6]
     viewer = models.Viewer.objects.get(user=request.user)
     return render(request, 'finder/dashbord.html', {'l_beer': liked_beers_v,
                                                     'beer_r': beer_r,
@@ -72,7 +72,7 @@ def tutorial_1(request):
 def tutorial_2(request, id):
     g_beer = GenericBeer.objects.get(id=id)
     beers_s = Beer.objects.filter(style=g_beer.style)
-    beers_f = Beer.objects.filter(flavor__in=g_beer.flavor.all())
+    beers_f = Beer.objects.filter(flavor__in=g_beer.flavor.all()).distinct().order_by('-likes')
     return render(request, 'finder/tutorial_2.html', {'beers_s': beers_s,
                                                       'beers_f': beers_f})
 
@@ -113,6 +113,7 @@ def like_beer(request, id):
         like.save()
         beer.likes += 1
         beer.save()
+        messages.success(request, 'you like this beer')
         return redirect('beer_f_info', id=beer.id)
 
 
@@ -129,4 +130,5 @@ def dislike_beer(request, id):
         like.save()
         beer.dislikes += 1
         beer.save()
+        messages.success(request, "you don't like this beer")
         return redirect('beer_f_info', id=beer.id)
