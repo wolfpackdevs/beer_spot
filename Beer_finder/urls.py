@@ -25,6 +25,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('brewer/', include('brewer.urls')),
     path('finder/', include('finder.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home')
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('about/', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('faq/', TemplateView.as_view(template_name='FAQ.html'), name='FAQ')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
