@@ -3,12 +3,10 @@
 {% block title %} Home {% endblock %}
 
 {% block block_1 %}
-<div id="home">
-	<div id="welcome" class="container">
-		<h1>Beer Spot</h1>
-		<h3>Your place to discover a new taste</h3>
-		<a href="{% url 'signup' %}"  class="btn btn-dark" >Sign up</a>
-		<a href="{% url 'login' %}"  class="btn btn-warning" >Login</a>
-	</div>
+<div id="welcome">
+	<h1>Beer Spot</h1>
+	<h3>Your place to discover a new taste</h3>
+	<a href="{% url 'signup' %}"  class="btn btn-dark" >Sign up</a>
+	<a href="{% url 'login' %}"  class="btn btn-warning" >Login</a>
 </div>
 {% endblock %}
