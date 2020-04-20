@@ -4,11 +4,33 @@ body{
 
 #home{
 	height: 92vh;
-	background-image: url(landing.jpeg);
+	background-image: url(beer_glass.jpeg);
 	background-size:contain;
 	color: white;
 	text-align: center;
 
+}
+
+
+.navbar {
+	width: 100%;
+	display: flex;
+	background-color: ;
+}
+
+.navbar ul {
+	display: flex;
+	float: right;
+    margin: 0;
+	padding: 0;
+	list-style: none;
+
+}
+
+.navbar a {
+	color: #000000;
+	text-shadow: 0px 0px 5px gray;
+	font-size: 20px;
 }
 
 #welcome{
