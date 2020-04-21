@@ -1,13 +1,18 @@
 body{	
-	height: 100%;
-	width: auto;
-	background-image: url(beer_glass.jpeg);
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	background-image: url(beer_glass2.jpeg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-color: rgb(52,58,64);
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
-
+h1 {
+	font-family: 'Lobster', cursive;
+}
 
 #home{
 	height: 100%;
@@ -15,15 +20,26 @@ body{
 	background-color: rgba(30,30,30,0.6);
 	background-size:contain;
 	color: white;
-	/* text-align: center; */
-	
 
 }
+
+.main {
+	min-height: 95vh;
+	width: 75%;
+	margin: 0 auto;
+	background: rgba(0,0,0,0.3)
+
+}
+
+/* Navbar */
 
 .navbar {
 	width: 100%;
 	display: flex;
 	position: fixed;
+	margin-left: 25%;
+	background: rgba(0,0,0,0.3)
+
 }
 
 .navbar ul {
@@ -32,7 +48,11 @@ body{
     margin: 0;
 	padding: 0;
 	list-style: none;
+}
 
+.navbar-link {
+	padding: 10px 15px;
+	text-decoration: none;
 }
 
 .navbar a {
