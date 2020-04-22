@@ -1,29 +1,42 @@
 body{	
-	height: 100%;
-	width: auto;
-	background-image: url(beer_glass.jpeg);
+	height: 100vh;
+	background-image: url(beer0.jpg);
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-color: rgb(52,58,64);
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
-
+h1 {
+	font-family: 'Lobster', cursive;
+}
 
 #home{
-	height: 100%;
+	height: 100vh;
 	width: auto;
 	background-color: rgba(30,30,30,0.6);
 	background-size:contain;
 	color: white;
-	/* text-align: center; */
-	
 
 }
+
+.main {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 95vh;
+	width: 75%;
+	margin: 0 auto;
+	background: rgba(0,0,0,0.3)
+
+}
+
+/* Navbar */
 
 .navbar {
 	width: 100%;
 	display: flex;
-	position: fixed;
+	justify-content: flex-end;
 }
 
 .navbar ul {
@@ -32,7 +45,11 @@ body{
     margin: 0;
 	padding: 0;
 	list-style: none;
+}
 
+.navbar-link {
+	padding: 10px 15px;
+	text-decoration: none;
 }
 
 .navbar a {
@@ -41,15 +58,51 @@ body{
 	font-size: 20px;
 }
 
+/* Home Page welcome screen */
+
 #welcome{
-	padding-top:30vh;
-	margin-left: 25%;
+	padding-top:10vh;
+	margin-left: 10%;
 	text-align: left;
-	font-size: 72px;
+	font-size: 52px;
 	color: #FFFFFF;
 	text-shadow: 0px 0px 5px #000000;
 	height: 100%;
 }
+
+/* Footer */
+
+footer {
+	color: white;
+	text-shadow: 0px 0px 5px #000000;
+}
+
+.footer-text {
+	padding: 20px 20px;
+}
+
+#login-btn {
+	text-decoration: none;
+	font-size: large;
+	color: white;
+	background-color: rgb(240,152,51);
+	padding: 10px 30px;
+	border: solid;
+	border-radius: 20px;
+	border-color: #FFFFFF;
+}
+
+#signup-btn {
+	text-decoration: none;
+	font-size: large;
+	color: white;
+	background-color: rgb(85,23,0);
+	padding: 10px 30px;
+	border: solid;
+	border-radius: 20px;
+	border-color: #FFFFFF;
+}
+
 
 
 #login{
@@ -63,11 +116,12 @@ body{
 	border: 1px solid black;
 }
 
+/* sign up */
 
 #sign_up{
 	width: 50%;
 	align-self: center;
-	margin-top: 5vh;
+	margin: 0 auto;
 	color: white;
 	background-color: rgba(138, 128, 128, .6);
 	border: 1px solid black;
