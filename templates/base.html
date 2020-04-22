@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Title{% endblock %}</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
     {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     {% endblock %}
@@ -16,22 +15,21 @@
         {% block nav %}
         <div id="nav-bar">
             <nav class="navbar">
-                <a class="navbar-link" href="{%url 'home' %}">Home</a>
-                <ul>
+
+                    <a class="navbar-link" href="{%url 'home' %}">Home</a>
                     {% if user.is_authenticated %}
-                    <li><a class="navbar-link" href="{% url 'dashbord' %}">Profile</a></li>
-                    <li><a class="navbar-link" href="{% url 'all_beers' %}">Beers</a></li>
-                    <li><a class="navbar-link" href="{% url 'tutorial_1' %}">Tutorial</a></li>
-                    <li><a class="navbar-link " href="{% url 'about' %}"  >About</a></li>
-                    <li><a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a></li>
-                    <li><a class="navbar-link " href="{% url 'logout' %}"  >Logout</a></li>              
+                        <a class="navbar-link" href="{% url 'dashbord' %}">Profile</a>
+                        <a class="navbar-link" href="{% url 'all_beers' %}">Beers</a>
+                        <a class="navbar-link" href="{% url 'tutorial_1' %}">Tutorial</a>
+                        <a class="navbar-link " href="{% url 'about' %}"  >About</a>
+                        <a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a>
+                        <a class="navbar-link " href="{% url 'logout' %}"  >Logout</a>              
                     {% else %}
-                    <a class="navbar-link " href="{% url 'signup' %}"  >Sign up</a>
-                    <a class="navbar-link " href="{% url 'login' %}"  >Log in</a>
-                    <a class="navbar-link " href="{% url 'about' %}"  >About</a>
-                    <a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a>
+                        <a class="navbar-link " href="{% url 'signup' %}"  >Sign up</a>
+                        <a class="navbar-link " href="{% url 'login' %}"  >Log in</a>
+                        <a class="navbar-link " href="{% url 'about' %}"  >About</a>
+                        <a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a>
                     {% endif %}
-                </ul>
             </nav>
         </div>
 
@@ -40,12 +38,12 @@
         {% block block_1 %}
         <!-- Page content -->
         {% endblock %}
+        <footer>
+            <div class="footer-text">
+                made by Yonibrese & Aaron Wolf
+            </div>
+        </footer>
     </div>
-    <footer class="page-footer fixed-bottom bg-dark" >
-        <div class="footer text-muted text-center">
-            made by Yonibrese & Aaron Wolf
-        </div>
-    </footer>
 
     {% block js%}
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

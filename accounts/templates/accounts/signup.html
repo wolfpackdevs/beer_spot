@@ -3,8 +3,8 @@
 {% block title %}sign up{% endblock %}
 
 {% block block_1 %}
-<div id="sign_up" class="container">
-    <h2>Sign up</h2>
+<div id="sign_up">
+    <h1>Sign up</h1>
     <p>Are you a brewer? sign up <a href="{% url 'signup_brewer' %}" class="btn btn-warning btn-outline-dark btn-sm text-dark">here</a></p>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
