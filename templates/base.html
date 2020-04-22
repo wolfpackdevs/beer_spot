@@ -12,28 +12,29 @@
     {% endblock %}
 </head>
 <body>
-    {% block nav %}
-    <div id="nav-bar">
-        <nav class="navbar">
-            <a class="navbar-link" href="{%url 'home' %}">Home</a>
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a class="navbar-link" href="{% url 'dashbord' %}">Profile</a></li>
-                <li><a class="navbar-link" href="{% url 'all_beers' %}">Beers</a></li>
-                <li><a class="navbar-link" href="{% url 'tutorial_1' %}">Tutorial</a></li>
-                <li><a class="navbar-link " href="{% url 'about' %}"  >About</a></li>
-                <li><a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a></li>
-                <li><a class="navbar-link " href="{% url 'logout' %}"  >Logout</a></li>              
-                {% else %}
-                <a class="navbar-link " href="{% url 'signup' %}"  >Sign up</a>
-                <a class="navbar-link " href="{% url 'login' %}"  >Log in</a>
-                <a class="navbar-link " href="{% url 'about' %}"  >About</a>
-                <a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a>
-                {% endif %}
-            </ul>
-        </nav>
-    </div>
     <div class="main">
+        {% block nav %}
+        <div id="nav-bar">
+            <nav class="navbar">
+                <a class="navbar-link" href="{%url 'home' %}">Home</a>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li><a class="navbar-link" href="{% url 'dashbord' %}">Profile</a></li>
+                    <li><a class="navbar-link" href="{% url 'all_beers' %}">Beers</a></li>
+                    <li><a class="navbar-link" href="{% url 'tutorial_1' %}">Tutorial</a></li>
+                    <li><a class="navbar-link " href="{% url 'about' %}"  >About</a></li>
+                    <li><a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a></li>
+                    <li><a class="navbar-link " href="{% url 'logout' %}"  >Logout</a></li>              
+                    {% else %}
+                    <a class="navbar-link " href="{% url 'signup' %}"  >Sign up</a>
+                    <a class="navbar-link " href="{% url 'login' %}"  >Log in</a>
+                    <a class="navbar-link " href="{% url 'about' %}"  >About</a>
+                    <a class="navbar-link " href="{% url 'FAQ' %}"  >FAQ</a>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
         {% endblock %}
 
         {% block block_1 %}
