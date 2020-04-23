@@ -110,12 +110,19 @@ footer {
 }
 
 .user {
+	display: flex;
 	padding: 20px;
 	margin: 10px;
 	width: 30%;
-	border: 1px solid;
-	border-color: rgba(204, 204, 204, 0.5);
+}
 
+.userinfo {
+	margin-left: 20px;
+}
+
+.dashboard-pic {
+	border-radius: 50%;
+	margin: 10px;
 }
 
 /* Dashboard Tabs */
