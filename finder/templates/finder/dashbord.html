@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ user.username }}'s dashbord {% endblock %}
-
+<h1 id="dash-title">{{user.username}}'s dashbord</h1>
 {% block block_1 %}
+
 <div class="dashboard">
     <div class="user">
         <a href="{% url 'edit_viewer' %}"><img src="{{viewer.picture.url}}" height="150px" width="150px" class="rounded-circle border border-dark "></a>
@@ -15,9 +15,9 @@
         <label for = "tab1">Favorite Beer</label>
         <input type = "radio" id = "tab2" name = "tabs">
         <label for = "tab2">Recommended Beer</label>
-        <div id = "content1">
+        <div id = "content1" class="content">
             {% for prf in l_beer %}
-            <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
+            <div class="beer-card" style="width: 18rem;">
                 <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
                 <div class="card-body">
                     <h5 class="card-title">{{ prf.beer }}</h5>
@@ -27,9 +27,9 @@
             </div>
             {% endfor %}
         </div>
-        <div id = "content2">
+        <div id = "content2" class="content">
             {% for beer in beer_r %}
-            <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
+            <div class="beer-card" style="width: 18rem;">
                 <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
                 <div class="card-body">
                     <h5 class="card-title">{{ beer }}</h5>
