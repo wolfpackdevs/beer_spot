@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
-
-<h1 id="dash-title">{{user.username}}'s dashbord</h1>
 {% block block_1 %}
+
+<!-- <h1 id="dash-title">dashbord</h1> -->
 
 <div class="dashboard">
     <div class="user">
-        <a href="{% url 'edit_viewer' %}"><img src="{{viewer.picture.url}}" height="150px" width="150px" class="dashboard-pic"></a>
+        <div class="picture">
+            <div class="image-text"><p>Change</p></div>
+            <a href="{% url 'edit_viewer' %}"><img src="{{viewer.picture.url}}" height="150px" width="150px" class="dashboard-pic"></a>
+        </div>
         <div class="userinfo">
             <h1>{{user.username}}</h1>
             <h2>{{user.first_name}} {{user.last_name}}</h2>
-            <a href="{% url 'edit_viewer' %}" class="btn btn-warning btn-sm" >edit profile</a>
-            <a href="{% url 'edit_pic' %}" class="btn btn-dark btn-sm" >edit picture</a>
+            <!-- <a href="{% url 'edit_viewer' %}" class="btn btn-warning btn-sm" >edit profile</a>
+            <a href="{% url 'edit_pic' %}" class="btn btn-dark btn-sm" >edit picture</a> -->
         </div>
     </div>
 
