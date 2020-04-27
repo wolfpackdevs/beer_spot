@@ -1,52 +1,52 @@
 {% extends 'base.html' %}
-
-{% block title %} {{ user.username }}'s dashbord {% endblock %}
-
 {% block block_1 %}
-<div id="dashbord">
-    <h1 class="text-white">Welcome {{user.first_name}}</h1>
-    <img src="{{viewer.picture.url}}" height="150px" width="150px" class="rounded-circle border border-dark ">
-    <br>
-    <a href="{% url 'edit_viewer' %}" class="btn btn-warning btn-sm" >edit profile</a>
-    <a href="{% url 'edit_pic' %}" class="btn btn-dark btn-sm" >edit picture</a>
-    <hr>
-    <div id="liked_beers" class="text-center">
-        <h3><a href="{% url 'all_liked' %}" class="text-dark">Liked Beers</a></h3>
-        <hr>
-        <div class="container">
-            <div class="row">
-                {% for prf in l_beer %}
-                <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
-                    <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ prf.beer }}</h5>
-                        <p class="card-text">{{ prf.beer.style }}</p>
-                        <a href="{% url 'beer_f_info' id=prf.beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+
+<!-- <h1 id="dash-title">dashbord</h1> -->
+
+<div class="dashboard">
+    <div class="user">
+        <div class="picture">
+            <div class="image-text"><p>Change</p></div>
+            <a href="{% url 'edit_viewer' %}"><img src="{{viewer.picture.url}}" height="150px" width="150px" class="dashboard-pic"></a>
+        </div>
+        <div class="userinfo">
+            <h1>{{user.username}}</h1>
+            <h2>{{user.first_name}} {{user.last_name}}</h2>
+            <!-- <a href="{% url 'edit_viewer' %}" class="btn btn-warning btn-sm" >edit profile</a>
+            <a href="{% url 'edit_pic' %}" class="btn btn-dark btn-sm" >edit picture</a> -->
         </div>
     </div>
-    <hr>
-    <div id="recommended_beer" class="text-center">
-        <h3><a href="{% url 'all_rec' %}" class="text-dark">Recommended Beers</a></h3>
-        <hr>
-        <div class="container">
-            <div class="row">
-                {% for beer in beer_r %}
-                <div class="card text-center col-md-4 shadow-lg beer-card" style="width: 18rem;">
-                    <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
-                    <div class="card-body">
-                        <h5 class="card-title">{{ beer }}</h5>
-                        <p class="card-text">{{ beer.style }}</p>
-                        <div class="card-bottom">
-                            <a href="{% url 'beer_f_info' id=beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
-                        </div>
+
+    <div class = "tabinator">
+        <input type = "radio" id = "tab1" name = "tabs" checked>
+        <label for = "tab1">Favorite Beer</label>
+        <input type = "radio" id = "tab2" name = "tabs">
+        <label for = "tab2">Recommended Beer</label>
+        <div id = "content1" class="content">
+            {% for prf in l_beer %}
+            <div class="beer-card" style="width: 18rem;">
+                <img src="{{ prf.beer.image.url }}" class="card-img-top" alt="{{beer.name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ prf.beer }}</h5>
+                    <p class="card-text">{{ prf.beer.style }}</p>
+                    <a href="{% url 'beer_f_info' id=prf.beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div id = "content2" class="content">
+            {% for beer in beer_r %}
+            <div class="beer-card" style="width: 18rem;">
+                <img src="{{ beer.image.url }}" class="card-img-top" alt="{{ beer.name }}" >
+                <div class="card-body">
+                    <h5 class="card-title">{{ beer }}</h5>
+                    <p class="card-text">{{ beer.style }}</p>
+                    <div class="card-bottom">
+                        <a href="{% url 'beer_f_info' id=beer.id %}" class="btn btn-dark btn-outline-warning">more info</a>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

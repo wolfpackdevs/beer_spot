@@ -1,11 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-# from brewer.models import Beer
-
-
-# Create your models here.
-
 class Brewery(models.Model):
     name = models.CharField(max_length=200)
     logo = models.ImageField(upload_to='logos/images/%Y/%m/%d', default='default/images/default.png',

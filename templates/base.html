@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Title{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Source+Sans+Pro&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
     {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
@@ -32,7 +32,6 @@
                     {% endif %}
             </nav>
         </div>
-
         {% endblock %}
 
         {% block block_1 %}
