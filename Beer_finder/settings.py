@@ -140,7 +140,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # e-mail backend for development with console
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# email with gmail
+# email with gmail will need to configure linode
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
