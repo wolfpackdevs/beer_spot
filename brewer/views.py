@@ -31,7 +31,8 @@ def add_beer(request):
             brewery = brewer.brewery
             image = form.cleaned_data['image']
             message = form.cleaned_data['message']
-            style, created = models.Style.objects.get_or_create(style=style_new)
+            # style, created = models.Style.objects.get_or_create(style=style_new)
+            style = form.cleaned_data['style']
             for flavor in flavors_new:
                 f_new, created = models.Flavor.objects.get_or_create(flavor_note=flavor.strip().capitalize())
                 flavors.append(f_new)
@@ -82,6 +83,7 @@ def change_beer(request, id):
         form = forms.ChangeBeerForm(instance=beer)
     return render(request, 'brewer/change_beer.html', {'beer': beer,
                                                        'form': form})
+
 
 @login_required
 @decorators.brewers_only
